@@ -1,0 +1,10 @@
+tr(hx-trigger='cancel' class='editing' hx-get=`/get-task-row/${task.id}`)
+    td
+        input(name="title" value=`${task.title}` required=true class="block text-sm leading-5 w-full py-2 px-3 border-2 border-rose-600 text-slate-500 rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-rose-200 focus:border-rose-500 dark:text-slate-400 dark:placeholder:text-slate-600 dark:bg-slate-900 dark:border-rose-500 dark:focus:ring-rose-900 dark:focus:border-rose-600")
+    td
+        input(name="description" value=`${task.description}` class="block text-sm leading-5 w-full py-2 px-3 border-2 border-rose-600 text-slate-500 rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-rose-200 focus:border-rose-500 dark:text-slate-400 dark:placeholder:text-slate-600 dark:bg-slate-900 dark:border-rose-500 dark:focus:ring-rose-900 dark:focus:border-rose-600")
+    td(class="text-right")
+        input(checked=task.completedAt type="checkbox" name="completed" value="true")
+    td(class="text-right")
+        button(class="mx-2 border-2 hover:border-red-500 border-red-600 py-1 px-2 rounded text-red text-sm" hx-get=`/get-task-row/${task.id}`) Cancel
+        button(class="border-2 hover:border-red-500 border-red-600 py-1 px-2 rounded text-red text-sm" hx-put=`/update/${task.id}` hx-include="closest tr") Save

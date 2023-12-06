@@ -1,0 +1,16 @@
+tr(id=`task-row-${task.id}`)
+    td #{task.title}
+    td #{task.description}
+    td(class="text-right")
+        input(
+            checked=task.completedAt
+            type="checkbox"
+            name="completed"
+            value="toggle"
+            hx-target=`#task-row-${task.id}`
+            hx-trigger="click"
+            hx-put=`/update/${task.id}`
+        )
+    td(class="w-28 text-right")
+        button(hx-get=`/get-edit-form/${task.id}` class="mx-2 text-red-800 uppercase font-bold text-xs") Edit
+        button(hx-delete=`/delete/${task.id}` class="text-red-800 uppercase font-bold text-xs") Delete
